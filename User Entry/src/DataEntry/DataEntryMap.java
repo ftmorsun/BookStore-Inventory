@@ -27,7 +27,9 @@ public class DataEntryMap {
 		String option = "";
 		select(option,hm);
 	}
-
+    
+	//write to file : "Users"
+ 
 	
 	//save the date inside the map
 	public static void saveInfo(HashMap<String, String> hm)
