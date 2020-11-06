@@ -1,4 +1,17 @@
 package UserDB;
+/* 	Let’s write an application for User Info
+Rules
+You should create book id for every book. It should be start from 1000
+Every book should have some information like name, author, year of publication and price
+Program should start with a menu for user can pick any option
+1) Add user
+2) Search by book id
+3) Search by any information
+4) Delete by book id
+
+5) List All Users
+6) Quit
+*/
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

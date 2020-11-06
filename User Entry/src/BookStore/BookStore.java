@@ -1,9 +1,22 @@
 package BookStore;
+/* 	Let’s write an application for bookstores
+Rules
+You should create book id for every book. It should be start from 1000
+Every book should have some information like name, author, year of publication and price
+Program should start with a menu for user can pick any option
+1) add book
+2) search by book id
+3) search by any information
+4) delete by book id
+5) List all books
+6) Quit
+*/
 
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class BookStore {
+	
 	/*---------------------------------------------------------------------------------------*/
 	//BookSore objects property
 	public static int bookid=1000;
@@ -12,6 +25,7 @@ public class BookStore {
 	private String author;
 	private String publish;
 	private double price;
+	static HashMap<Integer, String> books = new HashMap<>();
 	
 	/*---------------------------------------------------------------------------------------*/
 	/**
@@ -103,7 +117,7 @@ public class BookStore {
 	public static void menu(HashMap<Integer, BookStore> myStore) {
 			
 			Scanner scan = new Scanner(System.in);
-			
+			int option;
 			do {
 				
 				System.out.println("Choose an option to proceed");
@@ -114,7 +128,7 @@ public class BookStore {
 				"5: List all books\n"+
 				"6:Quit");
 				
-				int option = scan.nextInt();
+				option = scan.nextInt();
 				
 				switch(option) {
 					case 1:
@@ -133,12 +147,21 @@ public class BookStore {
 						listAll(myStore);
 						break;
 					case 6:
+						quit();
 						break;
+						default:
+							System.out.println("Enter 1-6");
 
 				}
 				
-			}while(true);
+			}while(option!=6);
 		}
+	private static void quit() {
+		// TODO Auto-generated method stub
+		System.out.println("Thanks for using our application.");
+	
+	}
+
 	/*---------------------------------------------------------------------------------------*/
 	//Search a  book to Store with Name and Author of the Book
 	private static void searchByID( HashMap<Integer, BookStore> myStore) {
@@ -193,10 +216,23 @@ public class BookStore {
 	private static void listAll(HashMap<Integer, BookStore> myStore) {
 		// TODO Auto-generated method stub
 		System.out.print("BookStore inventory ");
-		for(int i=0; i<myStore.size(); i++)
-		{	
-			System.out.println(myStore.get(i+1000));
-		}
+		if(!myStore.isEmpty())
+			 for (Integer keys : myStore.keySet())  
+				{
+				   System.out.println(keys + ":"+ myStore.get(keys));
+				}
+	    else
+	    	System.out.println("There is no book in the store");
+		
+
+		
+		if(!books.isEmpty())
+			 for (Integer keys : books.keySet())  
+				{
+				   System.out.println(keys + ":"+ books.get(keys));
+				}
+	    else
+	    	System.out.println("There is no book in the store");
 		
 	}
 	/*---------------------------------------------------------------------------------------*/
@@ -225,6 +261,22 @@ public class BookStore {
 		
 		System.out.println(info);
 		for (BookStore b : myStore.values())
+		{
+			if (b.toString().indexOf(info)>-1)
+			{
+				System.out.println(b);
+			}
+			else {
+				System.out.println("This book is not in the store");
+			}
+		}
+		
+		
+		System.out.print("Enter any keyword about the book: ");
+		String info=scan.nextLine();
+		
+		System.out.println(info);
+		for (String b : myStore.values())
 		{
 			if (b.toString().indexOf(info)>-1)
 			{
