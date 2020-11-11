@@ -1,6 +1,7 @@
 package atm;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Scanner;
 
 public class Account {
@@ -120,26 +121,32 @@ public class Account {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		public static void printEvenListElFunctional(List<Integer> list)
+		
 
 	}
 	
-	public void getCheckingWithdraw()
+	public void getWithdraw()
 
 	{
-		System.out.println("Your checking account balance is"+moneyFormat.format(getCheckingBalance()));
+		System.out.println("Your account "+accountNumber+" balance is"+moneyFormat.format(getCheckingBalance()));
 		System.out.println("Please, enter the amount to withraw");
 		double amount = scan.nextDouble();
 		
-		if (amunt <=0)
+		if (amount  <=0)
 		{
 			System.out.println("Amount can not be less than equal to zero");
-			getCheckingWithdraw();
+			getWithdraw();
 		}
 		else if (checkingBalance>=amount)
 		{
 			this.checkingBalance-=amount;
 			System.out.println("Your checking account balance is"+moneyFormat.format(getCheckingBalance()));
 		}
+	}
+	{
+		list.stream().filter(t->t%2==0).forEach(t->System.out.println(t+ " "));
+		
 	}
 	
 }
